@@ -1,22 +1,23 @@
+import os
+import time
+import requests
+import threading
+from datetime import datetime  # Добавляем для работы со временем
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-import time
-import requests
-import threading
-from datetime import datetime  # Добавляем для работы со временем
 
-# Телеграм токен и список чат IDs
-TELEGRAM_BOT_TOKEN = "7658322222:AAFlDM4KZtHUvMUPsFVPOPTEjwN3y8BExSA"
-CHAT_IDS = ["533627179", "300050016"]  # Список ID для отправки уведомлений
+# Телеграм токен и список чат IDs из переменных окружения
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_IDS = os.getenv("CHAT_IDS").split(",")
 
-# Данные для трёх аккаунтов
+# Данные для трёх аккаунтов из переменных окружения
 ACCOUNTS = [
-    {"email": "njumashev@inbox.ru", "password": "Nurgisakzkz123", "clicked": False},
-    {"email": "aydynbai@gmail.com", "password": "bbHrNDn7", "clicked": False},
-    {"email": "nurik23333@mail.ru", "password": "nurik230301", "clicked": False}
+    {"email": os.getenv("ACCOUNT1_EMAIL"), "password": os.getenv("ACCOUNT1_PASSWORD"), "clicked": False},
+    {"email": os.getenv("ACCOUNT2_EMAIL"), "password": os.getenv("ACCOUNT2_PASSWORD"), "clicked": False},
+    {"email": os.getenv("ACCOUNT3_EMAIL"), "password": os.getenv("ACCOUNT3_PASSWORD"), "clicked": False}
 ]
 
 # Настройки браузера
