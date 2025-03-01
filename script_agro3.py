@@ -11,7 +11,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Телеграм токен и список чат IDs из переменных окружения
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHAT_IDS = os.getenv("CHAT_IDS").split(",")
+CHAT_IDS = os.getenv("CHAT_IDS", "")
+if CHAT_IDS:
+    CHAT_IDS = CHAT_IDS.split(",")
+else:
+    CHAT_IDS = []
 
 # Данные для трёх аккаунтов из переменных окружения
 ACCOUNTS = [
