@@ -1,0 +1,1 @@
+worker: python script_agro3.py
